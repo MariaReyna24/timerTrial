@@ -17,16 +17,18 @@ struct Math{
      private(set) var score = 0
     var timeRemaining = 10 //this is in seconds naturally
 
-    mutating func answerCorreect(answer:Int){
+    mutating func answerCorreect(answer:Int) -> Bool{
         if answer == correctAnswer {
             score += 1
             timeRemaining += 5
-            
+            return true
         }else{
-            score -= 1
-        }
-        if score < 0 {
-            score = 0
+            if score < 1{
+                score = 0
+            } else {
+                score -= 1
+            }
+            return false
         }
     }
     mutating func generateAnswers(){

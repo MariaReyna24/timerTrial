@@ -16,8 +16,14 @@ struct Add_Button: View {
     var body: some View {
         
         Button {
-            game.answerCorreect(answer: num)
+            let isCorrect = game.answerCorreect(answer: num)
+            if isCorrect == true{
+                backgroundColor = Color.green
+            }else{
+                backgroundColor = Color.red
+            }
             game.generateAnswers()
+            
         } label: {
             Text("\(num)")
                 .frame(width: 90,height:50)
@@ -25,6 +31,7 @@ struct Add_Button: View {
                 .foregroundColor(.white)
                 .background(backgroundColor)
                 .clipShape(Rectangle())
+            
         }
        
       
